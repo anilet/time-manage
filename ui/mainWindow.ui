@@ -331,6 +331,13 @@
                 </spacer>
                </item>
                <item>
+                <widget class="QPushButton" name="deleteTimeButton" >
+                 <property name="text" >
+                  <string>Delete</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
                 <widget class="QPushButton" name="editButton" >
                  <property name="enabled" >
                   <bool>false</bool>

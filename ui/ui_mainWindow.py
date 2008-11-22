@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/home/anilet/Bhima/python/atlas/ui/mainWindow.ui'
+# Form implementation generated from reading ui file '/home/anilet/atlas/time-manage/ui/mainWindow.ui'
 #
-# Created: Tue Nov 18 22:04:18 2008
+# Created: Sun Nov 23 00:19:21 2008
 #      by: PyQt4 UI code generator 4.4.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -55,7 +55,7 @@ class Ui_MainWindow(object):
         self.dayChartLabel.setSizePolicy(sizePolicy)
         self.dayChartLabel.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
         self.dayChartLabel.setAcceptDrops(False)
- #       self.dayChartLabel.setAlignment(QtCore.Qt.AlignCenter)
+#        self.dayChartLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.dayChartLabel.setObjectName("dayChartLabel")
         self.horizontalLayout.addWidget(self.dayChartLabel)
         self.verticalLayout_4.addLayout(self.horizontalLayout)
@@ -137,6 +137,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.totLineEdit)
         spacerItem = QtGui.QSpacerItem(58, 43, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
+        self.deleteTimeButton = QtGui.QPushButton(self.dailyTimeGP)
+        self.deleteTimeButton.setObjectName("deleteTimeButton")
+        self.horizontalLayout_2.addWidget(self.deleteTimeButton)
         self.editButton = QtGui.QPushButton(self.dailyTimeGP)
         self.editButton.setEnabled(False)
         self.editButton.setObjectName("editButton")
@@ -351,6 +354,7 @@ class Ui_MainWindow(object):
         self.leaveCombo.setItemText(3, QtGui.QApplication.translate("MainWindow", "Loss of Pay", None, QtGui.QApplication.UnicodeUTF8))
         self.leaveCombo.setItemText(4, QtGui.QApplication.translate("MainWindow", "Other", None, QtGui.QApplication.UnicodeUTF8))
         self.totalHourdLabel.setText(QtGui.QApplication.translate("MainWindow", "Total Hours Worked", None, QtGui.QApplication.UnicodeUTF8))
+        self.deleteTimeButton.setText(QtGui.QApplication.translate("MainWindow", "Delete", None, QtGui.QApplication.UnicodeUTF8))
         self.editButton.setText(QtGui.QApplication.translate("MainWindow", "Edit", None, QtGui.QApplication.UnicodeUTF8))
         self.addDailyTimeButton.setText(QtGui.QApplication.translate("MainWindow", "Save", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setText(QtGui.QApplication.translate("MainWindow", "Job Numbers", None, QtGui.QApplication.UnicodeUTF8))
