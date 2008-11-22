@@ -1,0 +1,731 @@
+<ui version="4.0" >
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>868</width>
+    <height>583</height>
+   </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle" >
+   <string>Time Management</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="../resources.qrc" >
+    <normaloff>:/editmirror.png</normaloff>:/editmirror.png</iconset>
+  </property>
+  <property name="autoFillBackground" >
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget" >
+   <layout class="QVBoxLayout" name="verticalLayout_2" >
+    <item>
+     <widget class="QTabWidget" name="tabWidget" >
+      <property name="currentIndex" >
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tabTime" >
+       <attribute name="title" >
+        <string>Ti&amp;me Entry</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4" >
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout" >
+          <item>
+           <widget class="QCalendarWidget" name="calenderDay" >
+            <property name="sizePolicy" >
+             <sizepolicy vsizetype="Minimum" hsizetype="Expanding" >
+              <horstretch>2</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>200</width>
+              <height>150</height>
+             </size>
+            </property>
+            <property name="toolTip" >
+             <string>Click on a date to enter worked hours</string>
+            </property>
+            <property name="statusTip" >
+             <string>Click on a date to enter hours worked</string>
+            </property>
+            <property name="minimumDate" >
+             <date>
+              <year>1752</year>
+              <month>9</month>
+              <day>15</day>
+             </date>
+            </property>
+            <property name="firstDayOfWeek" >
+             <enum>Qt::Wednesday</enum>
+            </property>
+            <property name="gridVisible" >
+             <bool>true</bool>
+            </property>
+            <property name="verticalHeaderFormat" >
+             <enum>QCalendarWidget::NoVerticalHeader</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="mpl_pyqt4_widget" name="dayChartLabel" >
+            <property name="sizePolicy" >
+             <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+              <horstretch>4</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="contextMenuPolicy" >
+             <enum>Qt::CustomContextMenu</enum>
+            </property>
+            <property name="acceptDrops" >
+             <bool>false</bool>
+            </property>
+            <property name="toolTip" >
+             <string>Showing hours worked</string>
+            </property>
+            <property name="statusTip" >
+             <string>Showing graph of hours worked</string>
+            </property>
+            <property name="text" >
+             <string>No Image Shown</string>
+            </property>
+            <property name="alignment" >
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_3" >
+          <property name="text" >
+           <string>Daily time</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_4" >
+          <item>
+           <widget class="QGroupBox" name="dailyTimeGP" >
+            <property name="sizePolicy" >
+             <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
+              <horstretch>2</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>0</width>
+              <height>140</height>
+             </size>
+            </property>
+            <property name="title" >
+             <string>Daily Time</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout" >
+             <item>
+              <layout class="QGridLayout" name="gridLayout" >
+               <item row="0" column="0" >
+                <widget class="QLabel" name="label" >
+                 <property name="text" >
+                  <string>Time In:</string>
+                 </property>
+                 <property name="alignment" >
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="buddy" >
+                  <cstring>inLineEdit</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1" colspan="2" >
+                <widget class="QLineEdit" name="inLineEdit" >
+                 <property name="minimumSize" >
+                  <size>
+                   <width>50</width>
+                   <height>27</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize" >
+                  <size>
+                   <width>50</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="toolTip" >
+                  <string>Enter time in in the format 12:30</string>
+                 </property>
+                 <property name="statusTip" >
+                  <string>Enter In time in 12:30 format</string>
+                 </property>
+                 <property name="inputMask" >
+                  <string/>
+                 </property>
+                 <property name="maxLength" >
+                  <number>5</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="4" >
+                <widget class="QComboBox" name="inComboBox" >
+                 <item>
+                  <property name="text" >
+                   <string>AM</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text" >
+                   <string>PM</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="1" column="0" >
+                <widget class="QLabel" name="label_2" >
+                 <property name="text" >
+                  <string>Time Out:</string>
+                 </property>
+                 <property name="alignment" >
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="buddy" >
+                  <cstring>outLineEdit</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="4" >
+                <widget class="QComboBox" name="outComboBox" >
+                 <item>
+                  <property name="text" >
+                   <string>PM</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text" >
+                   <string>AM</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="1" column="1" >
+                <widget class="QLineEdit" name="outLineEdit" >
+                 <property name="minimumSize" >
+                  <size>
+                   <width>50</width>
+                   <height>27</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize" >
+                  <size>
+                   <width>50</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="toolTip" >
+                  <string>Enter time in 12:30 format</string>
+                 </property>
+                 <property name="statusTip" >
+                  <string>Enter In time in 12:30 format</string>
+                 </property>
+                 <property name="maxLength" >
+                  <number>5</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="noBreakCheckBox" >
+               <property name="enabled" >
+                <bool>false</bool>
+               </property>
+               <property name="statusTip" >
+                <string>Select if no lunch break</string>
+               </property>
+               <property name="text" >
+                <string>No Lunch Break</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_8" >
+               <item>
+                <widget class="QCheckBox" name="leaveCheckBox" >
+                 <property name="text" >
+                  <string>Leave</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="leaveCombo" >
+                 <property name="enabled" >
+                  <bool>false</bool>
+                 </property>
+                 <item>
+                  <property name="text" >
+                   <string>Annual Leave</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text" >
+                   <string>Sick Leave</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text" >
+                   <string>Compensatory Leave</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text" >
+                   <string>Loss of Pay</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text" >
+                   <string>Other</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QLabel" name="totalHourdLabel" >
+               <property name="text" >
+                <string>Total Hours Worked</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_2" >
+               <item>
+                <widget class="QLineEdit" name="totLineEdit" >
+                 <property name="enabled" >
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer" >
+                 <property name="orientation" >
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0" >
+                  <size>
+                   <width>58</width>
+                   <height>43</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="editButton" >
+                 <property name="enabled" >
+                  <bool>false</bool>
+                 </property>
+                 <property name="text" >
+                  <string>Edit</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="addDailyTimeButton" >
+                 <property name="enabled" >
+                  <bool>false</bool>
+                 </property>
+                 <property name="maximumSize" >
+                  <size>
+                   <width>60</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text" >
+                  <string>Save</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTableView" name="hourView" >
+            <property name="sizePolicy" >
+             <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
+              <horstretch>3</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_3" >
+            <item>
+             <widget class="QLabel" name="label_5" >
+              <property name="text" >
+               <string>Job Numbers</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="jobFilterCombo" >
+              <item>
+               <property name="text" >
+                <string>Current Jobs</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>Completed</string>
+               </property>
+              </item>
+              <item>
+               <property name="text" >
+                <string>All</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer" >
+              <property name="orientation" >
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0" >
+               <size>
+                <width>20</width>
+                <height>28</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="buttonDelete" >
+              <property name="enabled" >
+               <bool>false</bool>
+              </property>
+              <property name="minimumSize" >
+               <size>
+                <width>0</width>
+                <height>41</height>
+               </size>
+              </property>
+              <property name="text" >
+               <string>Delete</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="buttonNew" >
+              <property name="enabled" >
+               <bool>false</bool>
+              </property>
+              <property name="minimumSize" >
+               <size>
+                <width>0</width>
+                <height>41</height>
+               </size>
+              </property>
+              <property name="text" >
+               <string>New</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="buttonSave" >
+              <property name="enabled" >
+               <bool>false</bool>
+              </property>
+              <property name="minimumSize" >
+               <size>
+                <width>0</width>
+                <height>41</height>
+               </size>
+              </property>
+              <property name="text" >
+               <string>Save</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabJobs" >
+       <attribute name="title" >
+        <string>J&amp;obs</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_5" >
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_5" >
+          <item>
+           <widget class="QLabel" name="label_4" >
+            <property name="text" >
+             <string>Quick Search :</string>
+            </property>
+            <property name="buddy" >
+             <cstring>jobSearchEdit</cstring>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="jobSearchEdit" >
+            <property name="text" >
+             <string>type here to search</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="clearButton" >
+            <property name="text" >
+             <string>...</string>
+            </property>
+            <property name="icon" >
+             <iconset resource="../resources.qrc" >
+              <normaloff>:/back.png</normaloff>:/back.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="allJobsButton" >
+            <property name="text" >
+             <string>All Jobs</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="currentJobsButton" >
+            <property name="text" >
+             <string>Current jobs</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="customerComboBox" >
+            <property name="sizeAdjustPolicy" >
+             <enum>QComboBox::AdjustToContents</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="statusComboBox" >
+            <property name="sizeAdjustPolicy" >
+             <enum>QComboBox::AdjustToContents</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableView" name="tableViewJob" />
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_6" >
+          <item>
+           <spacer name="horizontalSpacer_2" >
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0" >
+             <size>
+              <width>568</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="openFolderButton" >
+            <property name="text" >
+             <string>Open Folder</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabStat" >
+       <attribute name="title" >
+        <string>S&amp;tatistics</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_7" >
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_6" >
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3" >
+            <item>
+             <widget class="MPL_Widget" name="statChart" >
+              <property name="sizePolicy" >
+               <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+                <horstretch>5</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text" >
+               <string>No Image Shown</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QTableWidget" name="tableWidget" />
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="treeTab" >
+       <attribute name="title" >
+        <string>Tree</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_7" >
+        <item>
+         <widget class="QTreeView" name="jobTreeView" />
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox" >
+          <property name="title" >
+           <string>GroupBox</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar" >
+   <property name="baseSize" >
+    <size>
+     <width>0</width>
+     <height>10</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QMenuBar" name="menuBar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>868</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuExtras" >
+    <property name="title" >
+     <string>&amp;File</string>
+    </property>
+    <addaction name="actionExit" />
+   </widget>
+   <widget class="QMenu" name="menu_Help" >
+    <property name="title" >
+     <string>&amp;Help</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_Job" >
+    <property name="title" >
+     <string>Job</string>
+    </property>
+   </widget>
+   <addaction name="menuExtras" />
+   <addaction name="menu_Help" />
+   <addaction name="menu_Job" />
+  </widget>
+  <action name="actionExit" >
+   <property name="icon" >
+    <iconset resource="../resources.qrc" >
+     <normaloff>:/filequit.png</normaloff>:/filequit.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Exit</string>
+   </property>
+  </action>
+  <action name="actionAbout" >
+   <property name="icon" >
+    <iconset resource="../resources.qrc" >
+     <normaloff>:/editzoom.png</normaloff>:/editzoom.png</iconset>
+   </property>
+   <property name="text" >
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionNew_Job" >
+   <property name="icon" >
+    <iconset resource="../resources.qrc" >
+     <normaloff>:/filenew.png</normaloff>:/filenew.png</iconset>
+   </property>
+   <property name="text" >
+    <string>New Job</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="4" margin="4" />
+ <customwidgets>
+  <customwidget>
+   <class>MPL_Widget</class>
+   <extends>QLabel</extends>
+   <header>mpl_custom_widget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>mpl_pyqt4_widget</class>
+   <extends>QLabel</extends>
+   <header location="global" >mpl_pyqt4_widget.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>inLineEdit</tabstop>
+  <tabstop>inComboBox</tabstop>
+  <tabstop>outLineEdit</tabstop>
+  <tabstop>outComboBox</tabstop>
+  <tabstop>noBreakCheckBox</tabstop>
+  <tabstop>addDailyTimeButton</tabstop>
+  <tabstop>buttonSave</tabstop>
+  <tabstop>buttonNew</tabstop>
+  <tabstop>buttonDelete</tabstop>
+  <tabstop>hourView</tabstop>
+  <tabstop>calenderDay</tabstop>
+  <tabstop>totLineEdit</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../resources.qrc" />
+ </resources>
+ <connections>
+  <connection>
+   <sender>actionExit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>433</x>
+     <y>291</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

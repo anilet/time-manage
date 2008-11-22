@@ -1,0 +1,9 @@
+update jobs SET FK_jobstatus_Id = '10' where stat = 'c';
+update jobs SET FK_jobstatus_Id = '10' where stat = 'C';
+update jobs SET FK_jobstatus_Id = '10' where stat = 'A';
+update jobs SET FK_jobstatus_Id = '5' where stat = 'P';
+update jobs SET FK_jobstatus_Id = '6' where stat = 'I';
+update jobs SET FK_jobstatus_Id = '10' where stat = 'A';
+update jobs SET FK_jobstatus_Id = '10' where stat = 'A';
+update jobs SET FK_jobstatus_Id = '10' where stat = 'A';
+update jobs SET FK_jobstatus_Id = '10' where stat = 'A';

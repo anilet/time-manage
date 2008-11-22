@@ -1,0 +1,385 @@
+<ui version="4.0" >
+ <class>newjobDlg</class>
+ <widget class="QDialog" name="newjobDlg" >
+  <property name="windowModality" >
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>413</width>
+    <height>475</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>New Job</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2" >
+   <item>
+    <layout class="QGridLayout" name="gridLayout" >
+     <item row="0" column="0" colspan="2" >
+      <widget class="QLabel" name="label" >
+       <property name="text" >
+        <string>Job No:</string>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="buddy" >
+        <cstring>jobNoEdit</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2" colspan="3" >
+      <widget class="QLineEdit" name="jobNoEdit" />
+     </item>
+     <item row="1" column="0" colspan="2" >
+      <widget class="QLabel" name="label_9" >
+       <property name="text" >
+        <string>Quote No</string>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="buddy" >
+        <cstring>quoteNoEdit</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2" colspan="3" >
+      <widget class="QLineEdit" name="quoteNoEdit" />
+     </item>
+     <item row="2" column="0" colspan="2" >
+      <widget class="QLabel" name="label_2" >
+       <property name="text" >
+        <string>Job Description</string>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="buddy" >
+        <cstring>jobDescriptionEdit</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2" colspan="6" >
+      <widget class="QLineEdit" name="jobDescriptionEdit" />
+     </item>
+     <item row="3" column="2" colspan="2" >
+      <widget class="QCheckBox" name="checkBox" >
+       <property name="text" >
+        <string>Rework</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="4" colspan="2" >
+      <widget class="QCheckBox" name="checkBox_2" >
+       <property name="text" >
+        <string>Modification</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="6" colspan="2" >
+      <widget class="QComboBox" name="oldJobNoComboBox" />
+     </item>
+     <item row="4" column="2" colspan="5" >
+      <widget class="QComboBox" name="jobTypeComboBox" />
+     </item>
+     <item row="4" column="7" >
+      <widget class="QToolButton" name="newJobTypeButton" >
+       <property name="toolTip" >
+        <string>New Job Type</string>
+       </property>
+       <property name="statusTip" >
+        <string>Create new Job type</string>
+       </property>
+       <property name="text" >
+        <string>...</string>
+       </property>
+       <property name="icon" >
+        <iconset resource="smeTime.qrc" >
+         <normaloff>:/images/16x16/actions/document-new.png</normaloff>:/images/16x16/actions/document-new.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="2" colspan="5" >
+      <widget class="QComboBox" name="jobStatusComboBox" />
+     </item>
+     <item row="5" column="7" >
+      <widget class="QToolButton" name="newJobStatusButton" >
+       <property name="toolTip" >
+        <string>New Status</string>
+       </property>
+       <property name="statusTip" >
+        <string>Add a new Status</string>
+       </property>
+       <property name="text" >
+        <string>...</string>
+       </property>
+       <property name="icon" >
+        <iconset resource="smeTime.qrc" >
+         <normaloff>:/images/16x16/actions/document-new.png</normaloff>:/images/16x16/actions/document-new.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="2" colspan="3" >
+      <widget class="QPushButton" name="partListButton" >
+       <property name="text" >
+        <string>Part List</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="5" colspan="3" >
+      <widget class="QPushButton" name="estdTimeButton" >
+       <property name="text" >
+        <string>Estimated Time</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="2" colspan="3" >
+      <widget class="QDateEdit" name="startDate" >
+       <property name="calendarPopup" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="2" colspan="3" >
+      <widget class="QDateEdit" name="dueDate" >
+       <property name="calendarPopup" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="2" colspan="5" >
+      <widget class="QComboBox" name="inchargeComboBox" />
+     </item>
+     <item row="9" column="7" >
+      <widget class="QToolButton" name="newEmployeeButton" >
+       <property name="toolTip" >
+        <string>New Employee</string>
+       </property>
+       <property name="statusTip" >
+        <string>Add a new employee</string>
+       </property>
+       <property name="text" >
+        <string>...</string>
+       </property>
+       <property name="icon" >
+        <iconset resource="smeTime.qrc" >
+         <normaloff>:/images/16x16/actions/document-new.png</normaloff>:/images/16x16/actions/document-new.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="2" colspan="6" >
+      <widget class="QTextEdit" name="remarksTextEdit" />
+     </item>
+     <item row="11" column="2" colspan="5" >
+      <widget class="QComboBox" name="customerComboBox" />
+     </item>
+     <item row="11" column="7" >
+      <widget class="QToolButton" name="newCustomerButton" >
+       <property name="toolTip" >
+        <string>New customer</string>
+       </property>
+       <property name="statusTip" >
+        <string>Add a New customer</string>
+       </property>
+       <property name="text" >
+        <string>...</string>
+       </property>
+       <property name="icon" >
+        <iconset resource="smeTime.qrc" >
+         <normaloff>:/images/16x16/actions/document-new.png</normaloff>:/images/16x16/actions/document-new.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="0" colspan="2" >
+      <widget class="QLabel" name="label_4" >
+       <property name="text" >
+        <string>Customer Order No</string>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="buddy" >
+        <cstring>customerOrderLineEdit</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="1" >
+      <layout class="QVBoxLayout" name="verticalLayout" >
+       <item>
+        <widget class="QLabel" name="label_8" >
+         <property name="text" >
+          <string>Remarks</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring>remarksTextEdit</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer" >
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0" >
+          <size>
+           <width>20</width>
+           <height>18</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="11" column="1" >
+      <widget class="QLabel" name="label_3" >
+       <property name="text" >
+        <string>Customer</string>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="buddy" >
+        <cstring>customerComboBox</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1" >
+      <widget class="QLabel" name="label_10" >
+       <property name="text" >
+        <string>In Charge</string>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="buddy" >
+        <cstring>inchargeComboBox</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1" >
+      <widget class="QLabel" name="label_6" >
+       <property name="text" >
+        <string>Due Date</string>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="buddy" >
+        <cstring>dueDate</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1" >
+      <widget class="QLabel" name="label_5" >
+       <property name="text" >
+        <string>Start Date</string>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="buddy" >
+        <cstring>startDate</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1" >
+      <widget class="QLabel" name="label_7" >
+       <property name="text" >
+        <string>Job Status</string>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="buddy" >
+        <cstring>jobStatusComboBox</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1" >
+      <widget class="QLabel" name="label_11" >
+       <property name="text" >
+        <string>Job Type</string>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="2" >
+      <widget class="QLineEdit" name="customerOrderLineEdit" />
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="Line" name="line" >
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout" >
+     <item>
+      <spacer name="horizontalSpacer" >
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancelButton" >
+       <property name="text" >
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="saveButton" >
+       <property name="text" >
+        <string>Save</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>jobNoEdit</tabstop>
+  <tabstop>quoteNoEdit</tabstop>
+  <tabstop>jobDescriptionEdit</tabstop>
+  <tabstop>customerComboBox</tabstop>
+  <tabstop>newCustomerButton</tabstop>
+  <tabstop>checkBox</tabstop>
+  <tabstop>checkBox_2</tabstop>
+  <tabstop>oldJobNoComboBox</tabstop>
+  <tabstop>startDate</tabstop>
+  <tabstop>dueDate</tabstop>
+  <tabstop>jobStatusComboBox</tabstop>
+  <tabstop>newJobStatusButton</tabstop>
+  <tabstop>partListButton</tabstop>
+  <tabstop>estdTimeButton</tabstop>
+  <tabstop>inchargeComboBox</tabstop>
+  <tabstop>newEmployeeButton</tabstop>
+  <tabstop>saveButton</tabstop>
+  <tabstop>remarksTextEdit</tabstop>
+  <tabstop>cancelButton</tabstop>
+ </tabstops>
+ <resources>
+  <include location="smeTime.qrc" />
+ </resources>
+ <connections/>
+</ui>

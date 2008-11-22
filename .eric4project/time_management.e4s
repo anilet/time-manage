@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Session SYSTEM "Session-4.2.dtd">
+<!-- eric4 session file for project time_management -->
+<!-- This file was generated automatically, do not edit. -->
+<!-- Saved: 2008-11-09, 22:58:40 -->
+<Session version="4.2">
+  <Filenames>
+    <Filename cline="405" cindex="1" folds="">/home/anilet/python/atlas/atlastimedlg.py</Filename>
+    <Filename cline="47" cindex="17" folds="">/home/anilet/python/atlas/validator.py</Filename>
+    <Filename cline="16" cindex="0" folds="">/home/anilet/python/atlas/ui/Ui_mainWindow.py</Filename>
+    <Filename cline="102" cindex="0" folds="">/home/anilet/python/atlas/ui/mpl_pyqt4_widget.py</Filename>
+  </Filenames>
+  <ActiveWindow cline="102" cindex="0">/home/anilet/python/atlas/ui/mpl_pyqt4_widget.py</ActiveWindow>
+  <Breakpoints>
+  </Breakpoints>
+  <Watchexpressions>
+  </Watchexpressions>
+  <DebugInfo>
+    <CommandLine></CommandLine>
+    <WorkingDirectory></WorkingDirectory>
+    <Environment></Environment>
+    <ReportExceptions value="True" />
+    <Exceptions>
+    </Exceptions>
+    <AutoClearShell value="True" />
+    <TracePython value="False" />
+    <AutoContinue value="True" />
+    <CovexcPattern></CovexcPattern>
+  </DebugInfo>
+  <Bookmarks>
+    <Bookmark>
+      <BmFilename>/home/anilet/python/atlas/atlastimedlg.py</BmFilename>
+      <Linenumber value="518" />
+    </Bookmark>
+  </Bookmarks>
+</Session>

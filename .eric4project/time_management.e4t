@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Tasks SYSTEM "Tasks-4.2.dtd">
+<!-- eric4 tasks file for project time_management -->
+<!-- Saved: 2008-11-20, 23:00:56 -->
+<Tasks version="4.2">
+  <Task priority="1" completed="False" bugfix="False">
+    <Summary>TODO: maximize button</Summary>
+    <Description></Description>
+    <Created>2008-11-04, 15:37:39</Created>
+    <Resource>
+      <Filename>lib/printer.py</Filename>
+      <Linenumber>94</Linenumber>
+    </Resource>
+  </Task>
+</Tasks>
