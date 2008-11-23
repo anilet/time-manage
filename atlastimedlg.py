@@ -34,6 +34,7 @@ import ui.ui_atlasUserDlg
 import ui.ui_mainWindow
 from newJobDlg import   NewJobDlg
 from progressDlg import   ProgressDlg
+from settingsDlg import   SettingsDlg
 from lib.database import KDatabase
 #from pylab import *
 #import numpy.numarray as na
@@ -104,12 +105,43 @@ def initDatabase():
         logger.debug('initialising database')
     global DB, DBHost, DBPort, DBName, DBUser, DBPass, DBType
     DB=KDatabase.addDatabase(DBType)
+    if DBHost == "":
+        DBHost, status = QInputDialog.getText(\
+            None,
+            "Enter Database server address",
+            "Server",
+            QLineEdit.Normal)
+
     DB.setHostName(DBHost)
+    if DBName == "":
+        #QString name 
+        DBName, status  =  QInputDialog.getText(\
+            None,
+            "Enter database name",
+            "Database",
+            QLineEdit.Normal)
+        logger.debug(DBName)
     DB.setDatabaseName(DBName)
+    if DBUser == "":
+        DBUser, status = QInputDialog.getText(\
+            None,
+            "Enter database User",
+            "User",
+            QLineEdit.Normal)
+
     DB.setUserName(DBUser)
+    if DBPass == "":
+        DBPass, status = QInputDialog.getText(\
+            None,
+            "Enter password",
+            "Password",
+            QLineEdit.Normal)
+
     DB.setPassword(DBPass)
+        
 
     if DB.open():
+        writeConfigFile(0)
 #        print "Successfully opened '%s' on '%s' for '%s'." % (DBName,DBHost,ProgramName)
         return 1
     else:
@@ -183,17 +215,17 @@ def readConfigFile(errorHandling):
    # global LANG
     #global uiWinDim, uiTearOff, uiTextProgMenu, uiToolButtons, uiIconSet
     settings = QSettings()
+    #print "in config"
     try:
+        
         UserName = settings.value("UserName").toString()
-        #DBHost = settings.value("DBHost", "").toString()
-        DBHost = settings.value("DBHost", "61.9.143.196").toString()
-        #DBHost = settings.value("DBHost", "192.168.0.23").toString()
-        #DBName = settings.value("DBName", "").toString()
-        DBName = settings.value("DBName", "").toString()
-        DBPort = settings.value("DBPort", "3306").toString()
-        DBUser = settings.value("DBUser", "").toString()
-        DBPass = settings.value("DBPass", "").toString()
-        DBType = settings.value("DBType", "QMYSQL").toString()
+        DBHost = settings.value("DBHost").toString()
+        #DBHost = settings.value("DBHost", "61.9.143.196").toString()
+        DBName = settings.value("DBName").toString()
+        DBPort = settings.value("DBPort").toString()
+        DBUser = settings.value("DBUser").toString()
+        DBPass = settings.value("DBPass").toString()
+        DBType = settings.value("DBType").toString()
         if debug:
             print "Printing from configuration %s, %s, %s, %s, %s, %s" % (DBHost, DBName,  DBPass,  DBPort,  DBType,  DBUser)
     except:
@@ -226,6 +258,12 @@ def writeConfigFile(errorHandling):
    # global LANG
     #global uiWinDim, uiTearOff, uiTextProgMenu, uiToolButtons, uiIconSet
     settings = QSettings()
+    settings.setValue("DBHost", QVariant(DBHost))
+    settings.setValue("DBPort", QVariant(DBPort))
+    settings.setValue("DBName", QVariant(DBName))
+    settings.setValue("DBUser", QVariant(DBUser))
+    settings.setValue("DBPass", QVariant(DBPass))
+    settings.setValue("DBType", QVariant(DBType))
     
 class JobDelegate(QSqlRelationalDelegate):
     if debug:
@@ -539,6 +577,7 @@ class MainWindow(QMainWindow,
         helpHelpAction = self.createAction("&Help", self.helpHelp,
                 QKeySequence.HelpContents)
         jobAction = self.createAction("&Job", self.createJob)
+        settingsAction = self.createAction("&Settings",  self.openSettings)
     
         #self.jobMenu = self.menuBar().addMenu("&Job")
         #self.fileMenuActions = (fileQuitAction)
@@ -547,7 +586,8 @@ class MainWindow(QMainWindow,
     
         #helpMenu = self.menuBar().addMenu("&Help")
         self.addActions(self.menu_Help, (helpAboutAction, helpHelpAction))
-        self.addActions(self.menu_Job, (jobAction, helpHelpAction))
+        self.addActions(self.menu_Job, (jobAction, ))
+        self.addActions(self.menu_Settings, (settingsAction, ))
         
 
 
@@ -580,6 +620,10 @@ class MainWindow(QMainWindow,
     @pyqtSignature("")
     def on_editButton_clicked(self):
         self.updateUi(True)
+        
+    @pyqtSignature("")
+    def on_deleteTimeButton_clicked(self):
+        self.deleteDailyTime()
         
     @pyqtSignature("")
     def on_allJobsButton_clicked(self):
@@ -650,7 +694,10 @@ class MainWindow(QMainWindow,
         jobForm = NewJobDlg(self)
         jobForm.show()
         #pass
-
+    def openSettings(self):
+        settingsForm = SettingsDlg(self)
+        settingsForm.show()
+    
     def dateChanged(self):
         global UserID
         global monthChanged
@@ -767,6 +814,56 @@ class MainWindow(QMainWindow,
         outTimeText = self.outLineEdit.text()
         self._setMonthFilter( date, 1)
         self.updateUi()
+    
+    def deleteDailyTime(self):
+        if debug:
+            logger.debug('Deleting daily time ')
+        global currentDate,  timeCardInDatabase, chartDrawn, DB
+        if not DB.isOpen():
+                DB.open()
+        query = QSqlQuery()
+        date = currentDate
+        pydate = date.toPyDate()   
+        dt_D  =  str(pydate.day)
+        dt_M = str(pydate.month)
+        dt_Y = str(pydate.year )
+        if  timeCardInDatabase:
+            res = QMessageBox.question(None,
+                self.trUtf8("Do you want to delete the details"),
+                self.trUtf8("""Do you want to delete the details for  %s""" %date),
+                QMessageBox.StandardButtons(\
+                    QMessageBox.Cancel | \
+                    QMessageBox.No | \
+                    QMessageBox.Yes),
+                QMessageBox.No)
+            if res == QMessageBox.Yes:
+                query.prepare("DELETE from timecard where FK_empl_Id=:id and worked_Day=:dt_D and worked_Month=:dt_M and worked_Year=:dt_Y ")
+                query.bindValue(":id", QVariant(self.getUserID()))
+                query.bindValue(":dt_D", QVariant(dt_D))
+                query.bindValue(":dt_M", QVariant(dt_M))
+                query.bindValue(":dt_Y", QVariant(dt_Y))
+                query.exec_()
+        if debug:
+            print query.lastQuery()
+#        query.exec_("insert into timecard(FK_empl_Id,time_In,time_Out,worked_Date,isDataEntered) "
+#            "values  ('%s' ,%s,%s, '%s-%s-%s',0)" % (self.getUserID(),timeIn, timeOut,  pydate.year, pydate.month, pydate.day) )
+        if not query.isActive():
+            QMessageBox.warning(self, "Daily time sheet -- Database Error",
+                    "Failed to open database %s" % (query.lastError().text()))
+        else:
+            #if not progressForm:
+            app.setOverrideCursor(QCursor(Qt.WaitCursor))
+            progressForm = ProgressDlg(self)
+            progressForm.lblMessage.setText("Deleting data......")
+            progressForm.show()
+            chartDrawn = False
+            self.monthGraphDataForMatplot()
+            app.restoreOverrideCursor()
+            timeCardInDatabase = False
+        inTimeText = self.inLineEdit.text()
+        outTimeText = self.outLineEdit.text()
+        self._setMonthFilter( date, 1)
+        self.updateUi()
 
     def updateUi(self, enable = False):
         global timeCardInDatabase,  jobDataSaved
@@ -779,6 +876,7 @@ class MainWindow(QMainWindow,
                           self.outLineEdit.text().isEmpty()):
                 self.addDailyTimeButton.setEnabled(False)
                 self.editButton.setEnabled(True)
+                self.deleteTimeButton.setEnabled(True)
                 self.inLineEdit.setEnabled(False)
                 self.inComboBox.setEnabled(False)
                 self.outLineEdit.setEnabled(False)
@@ -789,6 +887,7 @@ class MainWindow(QMainWindow,
             else:
                 #self.addDailyTimeButton.setEnabled(True)
                 self.editButton.setEnabled(False)
+                self.deleteTimeButton.setEnabled(False)
                 self.inLineEdit.setEnabled(True)
                 self.inComboBox.setEnabled(True)
                 self.outLineEdit.setEnabled(True)
@@ -804,6 +903,7 @@ class MainWindow(QMainWindow,
                 self.addDailyTimeButton.setEnabled(True)
             
             self.editButton.setEnabled(False)
+            self.deleteTimeButton.setEnabled(False)
             self.inLineEdit.setEnabled(True)
             self.inComboBox.setEnabled(True)
             self.outLineEdit.setEnabled(True)
@@ -817,6 +917,7 @@ class MainWindow(QMainWindow,
         if enable:
             self.addDailyTimeButton.setEnabled(True)
             self.editButton.setEnabled(False)
+            self.deleteTimeButton.setEnabled(False)
             self.inLineEdit.setEnabled(True)
             self.inComboBox.setEnabled(True)
             self.outLineEdit.setEnabled(True)
@@ -1237,6 +1338,9 @@ class MainWindow(QMainWindow,
 #                #self.fileSave()
 #                pass/time
         return True   
+    
+    def closeEvent(self, event):
+        writeConfigFile()
     
     def addWork(self):
         if debug:

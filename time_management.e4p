@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.4.dtd">
 <!-- eric4 project file for project time_management -->
-<!-- Saved: 2008-11-19, 21:12:20 -->
+<!-- Saved: 2008-11-23, 15:59:49 -->
 <!-- Copyright (C) 2008 ,  -->
 <Project version="4.4">
   <ProgLanguage mixed="0">Python</ProgLanguage>
@@ -26,6 +26,7 @@
     <Source>ui/mpl_pyqt4_widget.py</Source>
     <Source>newJobDlg.py</Source>
     <Source>progressDlg.py</Source>
+    <Source>settingsDlg.py</Source>
   </Sources>
   <Forms>
     <Form>ui/time.ui</Form>

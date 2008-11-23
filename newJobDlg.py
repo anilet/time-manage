@@ -98,9 +98,20 @@ class NewJobDlg(QDialog,
                 self.inchargeComboBox.findText("Select"))
         self.customerComboBox.setCurrentIndex(
                 self.customerComboBox.findText("Select customer"))
-                
+        self.newJobNo()        
         self.jobNoEdit.setFocus()
-    
+        
+    def newJobNo(self):
+        query = QSqlQuery()
+        query.exec_("select MAX(job_No) from jobs1")
+        while query.next():
+            if query.value(0).isValid():
+                jobNo, val = query.value(0).toInt()
+                print jobNo
+                jobNo = jobNo + 1
+                self.jobNoEdit.setText("%s"%jobNo)
+                
+                            
     @pyqtSignature("")
     def on_okButton_clicked(self):
         global UserID

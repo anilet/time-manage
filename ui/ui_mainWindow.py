@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '/home/anilet/atlas/time-manage/ui/mainWindow.ui'
 #
-# Created: Sun Nov 23 00:19:21 2008
+# Created: Sun Nov 23 16:16:39 2008
 #      by: PyQt4 UI code generator 4.4.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -249,7 +249,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.statChart.sizePolicy().hasHeightForWidth())
         self.statChart.setSizePolicy(sizePolicy)
- #       self.statChart.setAlignment(QtCore.Qt.AlignCenter)
+#        self.statChart.setAlignment(QtCore.Qt.AlignCenter)
         self.statChart.setObjectName("statChart")
         self.horizontalLayout_3.addWidget(self.statChart)
         self.verticalLayout_6.addLayout(self.horizontalLayout_3)
@@ -286,6 +286,8 @@ class Ui_MainWindow(object):
         self.menu_Help.setObjectName("menu_Help")
         self.menu_Job = QtGui.QMenu(self.menuBar)
         self.menu_Job.setObjectName("menu_Job")
+        self.menu_Settings = QtGui.QMenu(self.menuBar)
+        self.menu_Settings.setObjectName("menu_Settings")
         MainWindow.setMenuBar(self.menuBar)
         self.actionExit = QtGui.QAction(MainWindow)
         icon2 = QtGui.QIcon()
@@ -304,8 +306,9 @@ class Ui_MainWindow(object):
         self.actionNew_Job.setObjectName("actionNew_Job")
         self.menuExtras.addAction(self.actionExit)
         self.menuBar.addAction(self.menuExtras.menuAction())
-        self.menuBar.addAction(self.menu_Help.menuAction())
         self.menuBar.addAction(self.menu_Job.menuAction())
+        self.menuBar.addAction(self.menu_Settings.menuAction())
+        self.menuBar.addAction(self.menu_Help.menuAction())
         self.label.setBuddy(self.inLineEdit)
         self.label_2.setBuddy(self.outLineEdit)
         self.label_4.setBuddy(self.jobSearchEdit)
@@ -379,6 +382,7 @@ class Ui_MainWindow(object):
         self.menuExtras.setTitle(QtGui.QApplication.translate("MainWindow", "&File", None, QtGui.QApplication.UnicodeUTF8))
         self.menu_Help.setTitle(QtGui.QApplication.translate("MainWindow", "&Help", None, QtGui.QApplication.UnicodeUTF8))
         self.menu_Job.setTitle(QtGui.QApplication.translate("MainWindow", "Job", None, QtGui.QApplication.UnicodeUTF8))
+        self.menu_Settings.setTitle(QtGui.QApplication.translate("MainWindow", "Settings", None, QtGui.QApplication.UnicodeUTF8))
         self.actionExit.setText(QtGui.QApplication.translate("MainWindow", "&Exit", None, QtGui.QApplication.UnicodeUTF8))
         self.actionAbout.setText(QtGui.QApplication.translate("MainWindow", "About", None, QtGui.QApplication.UnicodeUTF8))
         self.actionNew_Job.setText(QtGui.QApplication.translate("MainWindow", "New Job", None, QtGui.QApplication.UnicodeUTF8))

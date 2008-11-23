@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/home/anilet/Bhima/python/atlas/ui/newjobDlg.ui'
+# Form implementation generated from reading ui file '/home/anilet/atlas/time-manage/ui/newjobDlg.ui'
 #
-# Created: Sun Nov 16 23:13:06 2008
+# Created: Sun Nov 23 22:53:34 2008
 #      by: PyQt4 UI code generator 4.4.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -164,6 +164,7 @@ class Ui_newjobDlg(object):
         self.label_7.setBuddy(self.jobStatusComboBox)
 
         self.retranslateUi(newjobDlg)
+        QtCore.QObject.connect(self.cancelButton, QtCore.SIGNAL("clicked()"), newjobDlg.reject)
         QtCore.QMetaObject.connectSlotsByName(newjobDlg)
         newjobDlg.setTabOrder(self.jobNoEdit, self.quoteNoEdit)
         newjobDlg.setTabOrder(self.quoteNoEdit, self.jobDescriptionEdit)

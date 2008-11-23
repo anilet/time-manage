@@ -381,5 +381,22 @@
  <resources>
   <include location="smeTime.qrc" />
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>newjobDlg</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>306</x>
+     <y>456</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>206</x>
+     <y>237</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
