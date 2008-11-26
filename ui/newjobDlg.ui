@@ -310,6 +310,9 @@
        <property name="alignment" >
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
+       <property name="buddy" >
+        <cstring>jobTypeComboBox</cstring>
+       </property>
       </widget>
      </item>
      <item row="12" column="2" >
@@ -361,21 +364,24 @@
   <tabstop>jobNoEdit</tabstop>
   <tabstop>quoteNoEdit</tabstop>
   <tabstop>jobDescriptionEdit</tabstop>
-  <tabstop>customerComboBox</tabstop>
-  <tabstop>newCustomerButton</tabstop>
   <tabstop>checkBox</tabstop>
   <tabstop>checkBox_2</tabstop>
   <tabstop>oldJobNoComboBox</tabstop>
-  <tabstop>startDate</tabstop>
-  <tabstop>dueDate</tabstop>
+  <tabstop>jobTypeComboBox</tabstop>
+  <tabstop>newJobTypeButton</tabstop>
   <tabstop>jobStatusComboBox</tabstop>
   <tabstop>newJobStatusButton</tabstop>
   <tabstop>partListButton</tabstop>
   <tabstop>estdTimeButton</tabstop>
+  <tabstop>startDate</tabstop>
+  <tabstop>dueDate</tabstop>
   <tabstop>inchargeComboBox</tabstop>
   <tabstop>newEmployeeButton</tabstop>
-  <tabstop>saveButton</tabstop>
   <tabstop>remarksTextEdit</tabstop>
+  <tabstop>customerComboBox</tabstop>
+  <tabstop>newCustomerButton</tabstop>
+  <tabstop>customerOrderLineEdit</tabstop>
+  <tabstop>saveButton</tabstop>
   <tabstop>cancelButton</tabstop>
  </tabstops>
  <resources>

@@ -36,6 +36,8 @@ from newJobDlg import   NewJobDlg
 from progressDlg import   ProgressDlg
 from settingsDlg import   SettingsDlg
 from lib.database import KDatabase
+import lib.treeoftable
+#import lib.treeoftableView
 #from pylab import *
 #import numpy.numarray as na
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter, NullFormatter
@@ -587,7 +589,7 @@ class MainWindow(QMainWindow,
         #helpMenu = self.menuBar().addMenu("&Help")
         self.addActions(self.menu_Help, (helpAboutAction, helpHelpAction))
         self.addActions(self.menu_Job, (jobAction, ))
-        self.addActions(self.menu_Settings, (settingsAction, ))
+        self.addActions(self.menuSettings, (settingsAction, ))
         
 
 

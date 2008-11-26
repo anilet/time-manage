@@ -19,17 +19,6 @@ from lib.database import KDatabase
 
 KEY, NODE = range(2)
 
-def connectToMysql():
-        #print "Connecting to MySQL"
-        db = QSqlDatabase.addDatabase("QMYSQL")
-        db.setHostName("phoenixitsolutions.com.au");
-        db.setDatabaseName("timemanagement");
-        db.setUserName("anilet");
-        db.setPassword("02092089");
-        if not db.open():
-                QMessageBox.warning(None, "Phone Log",
-                    QString("Database Error: %1").arg(db.lastError().text()))
-                sys.exit(1)
 
 class BranchNode(object):
 
@@ -42,6 +31,7 @@ class BranchNode(object):
 
     def orderKey(self):
         return self.name.lower()
+        #return self.name
 
 
     def toString(self):
@@ -134,17 +124,20 @@ class TreeOfTableModel(QAbstractItemModel):
     def load(self): 
         #assert nesting > 0
         #self.nesting = nesting
+        separator = ","
         self.root = BranchNode("")
         exception = None
         fh = None
+        print "loading data"
         try:
-            connectToMysql()
+  #          connectToMysql()
             query = QSqlQuery()
-            query.exec_("SELECT `empl_First_Name`,`empl_Position`,`password` FROM `employee` "
-                    "WHERE `is_Active` = 1 ORDER by `empl_Id`")
+            print "Executing query"
+            query.exec_("select jobs1.job_No,jobstatus.Description,customer.cust_Name  from `jobs1` JOIN `customer` ON (jobs1.FK_customer_Id=customer.cust_Id) JOIN jobstatus ON (jobs1.FK_jobstatus_Id=jobstatus.ID)")
             while query.next():
-                name = QString(query.value(0).toString())
-                self.addRecord(line.split(separator), False)
+                name = unicode(query.value(1).toString()) + "," + unicode(query.value(2).toString()) + "," + unicode(query.value(0).toString()) 
+                print name
+                self.addRecord(name.split(separator), False)
         except IOError, e:
             exception = e
         finally:
@@ -158,11 +151,12 @@ class TreeOfTableModel(QAbstractItemModel):
 
 
     def addRecord(self, fields, callReset=True):
-        assert len(fields) > self.nesting
+        #assert len(fields) > self.nesting
         root = self.root
         branch = None
-        for i in range(self.nesting):
+        for i in range(2):
             key = fields[i].lower()
+            #key = fields[i]
             branch = root.childWithKey(key)
             if branch is not None:
                 root = branch
@@ -171,7 +165,7 @@ class TreeOfTableModel(QAbstractItemModel):
                 root.insertChild(branch)
                 root = branch
         assert branch is not None
-        items = fields[self.nesting:]
+        items = fields[2:]
         self.columns = max(self.columns, len(items))
         branch.insertChild(LeafNode(items, branch))
         if callReset:

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.4.dtd">
 <!-- eric4 project file for project time_management -->
-<!-- Saved: 2008-11-23, 15:59:49 -->
+<!-- Saved: 2008-11-26, 23:54:46 -->
 <!-- Copyright (C) 2008 ,  -->
 <Project version="4.4">
   <ProgLanguage mixed="0">Python</ProgLanguage>
@@ -27,6 +27,8 @@
     <Source>newJobDlg.py</Source>
     <Source>progressDlg.py</Source>
     <Source>settingsDlg.py</Source>
+    <Source>lib/treeoftable.py</Source>
+    <Source>ui/treeoftableView.py</Source>
   </Sources>
   <Forms>
     <Form>ui/time.ui</Form>

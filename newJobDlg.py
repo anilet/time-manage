@@ -41,6 +41,7 @@ class NewJobDlg(QDialog,
                 QSqlRelation("employee", "empl_Id", "empl_First_Name"))
         self.model.setRelation(6,
                 QSqlRelation("customer", "cust_Id", "cust_Name"))
+        
         self.model.setSort(0, Qt.AscendingOrder)
         self.model.select()
         logger.debug('setting up model')
@@ -111,7 +112,21 @@ class NewJobDlg(QDialog,
                 jobNo = jobNo + 1
                 self.jobNoEdit.setText("%s"%jobNo)
                 
-                            
+    @pyqtSignature("")
+    def on_saveButton_clicked(self):
+        self.mapper.submit()
+    
+    def fillOldJobNoComboBox(self):
+        query = QSqlQuery()
+        query.exec_("SELECT `job_No` FROM `jobs1` "
+                "WHERE `is_Active` = 1 ORDER by `empl_Id`")
+        while query.next():
+            name = QString(query.value(0).toString())
+            self.userComboBox.addItem(name)
+        
+        
+        
+    
     @pyqtSignature("")
     def on_okButton_clicked(self):
         global UserID

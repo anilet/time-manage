@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '/home/anilet/atlas/time-manage/ui/newjobDlg.ui'
 #
-# Created: Sun Nov 23 22:53:34 2008
+# Created: Wed Nov 26 22:27:51 2008
 #      by: PyQt4 UI code generator 4.4.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -162,28 +162,32 @@ class Ui_newjobDlg(object):
         self.label_6.setBuddy(self.dueDate)
         self.label_5.setBuddy(self.startDate)
         self.label_7.setBuddy(self.jobStatusComboBox)
+        self.label_11.setBuddy(self.jobTypeComboBox)
 
         self.retranslateUi(newjobDlg)
         QtCore.QObject.connect(self.cancelButton, QtCore.SIGNAL("clicked()"), newjobDlg.reject)
         QtCore.QMetaObject.connectSlotsByName(newjobDlg)
         newjobDlg.setTabOrder(self.jobNoEdit, self.quoteNoEdit)
         newjobDlg.setTabOrder(self.quoteNoEdit, self.jobDescriptionEdit)
-        newjobDlg.setTabOrder(self.jobDescriptionEdit, self.customerComboBox)
-        newjobDlg.setTabOrder(self.customerComboBox, self.newCustomerButton)
-        newjobDlg.setTabOrder(self.newCustomerButton, self.checkBox)
+        newjobDlg.setTabOrder(self.jobDescriptionEdit, self.checkBox)
         newjobDlg.setTabOrder(self.checkBox, self.checkBox_2)
         newjobDlg.setTabOrder(self.checkBox_2, self.oldJobNoComboBox)
-        newjobDlg.setTabOrder(self.oldJobNoComboBox, self.startDate)
-        newjobDlg.setTabOrder(self.startDate, self.dueDate)
-        newjobDlg.setTabOrder(self.dueDate, self.jobStatusComboBox)
+        newjobDlg.setTabOrder(self.oldJobNoComboBox, self.jobTypeComboBox)
+        newjobDlg.setTabOrder(self.jobTypeComboBox, self.newJobTypeButton)
+        newjobDlg.setTabOrder(self.newJobTypeButton, self.jobStatusComboBox)
         newjobDlg.setTabOrder(self.jobStatusComboBox, self.newJobStatusButton)
         newjobDlg.setTabOrder(self.newJobStatusButton, self.partListButton)
         newjobDlg.setTabOrder(self.partListButton, self.estdTimeButton)
-        newjobDlg.setTabOrder(self.estdTimeButton, self.inchargeComboBox)
+        newjobDlg.setTabOrder(self.estdTimeButton, self.startDate)
+        newjobDlg.setTabOrder(self.startDate, self.dueDate)
+        newjobDlg.setTabOrder(self.dueDate, self.inchargeComboBox)
         newjobDlg.setTabOrder(self.inchargeComboBox, self.newEmployeeButton)
-        newjobDlg.setTabOrder(self.newEmployeeButton, self.saveButton)
-        newjobDlg.setTabOrder(self.saveButton, self.remarksTextEdit)
-        newjobDlg.setTabOrder(self.remarksTextEdit, self.cancelButton)
+        newjobDlg.setTabOrder(self.newEmployeeButton, self.remarksTextEdit)
+        newjobDlg.setTabOrder(self.remarksTextEdit, self.customerComboBox)
+        newjobDlg.setTabOrder(self.customerComboBox, self.newCustomerButton)
+        newjobDlg.setTabOrder(self.newCustomerButton, self.customerOrderLineEdit)
+        newjobDlg.setTabOrder(self.customerOrderLineEdit, self.saveButton)
+        newjobDlg.setTabOrder(self.saveButton, self.cancelButton)
 
     def retranslateUi(self, newjobDlg):
         newjobDlg.setWindowTitle(QtGui.QApplication.translate("newjobDlg", "New Job", None, QtGui.QApplication.UnicodeUTF8))
