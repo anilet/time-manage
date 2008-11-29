@@ -30,6 +30,7 @@ class ProgressDlg(QDialog,
         self.__index = 0
         #logger.debug('Showing Progress')
         self.setupUi(self)
+        self.setWindowFlags(Qt.Popup) 
         self.updated = False
         timer = QTimer(self)
         self.connect(timer, SIGNAL("timeout()"), self.closeMe)

@@ -26,9 +26,9 @@ class NewJobDlg(QDialog,
     def __init__(self, parent=None):
         super(NewJobDlg, self).__init__(parent)
         self.__index = 0
-        logger.debug('Setting up NewJobDlg')
+        #logger.debug('Setting up NewJobDlg')
         self.setupUi(self)
-        logger.debug('Setting up NewJobDlg completed')
+        #logger.debug('Setting up NewJobDlg completed')
         self.setWindowTitle("New Job - Atlas Tooling")
         #model
         self.model = QSqlRelationalTableModel(self)
@@ -44,7 +44,7 @@ class NewJobDlg(QDialog,
         
         self.model.setSort(0, Qt.AscendingOrder)
         self.model.select()
-        logger.debug('setting up model')
+        #logger.debug('setting up model')
 
         self.mapper = QDataWidgetMapper(self)
         self.mapper.setSubmitPolicy(QDataWidgetMapper.ManualSubmit)
@@ -114,7 +114,13 @@ class NewJobDlg(QDialog,
                 
     @pyqtSignature("")
     def on_saveButton_clicked(self):
+        self.setOverrideCursor(QCursor(Qt.WaitCursor))
+        progressForm = ProgressDlg(self)
+        progressForm.lblMessage.setText("Saving data......")
+        progressForm.show()
         self.mapper.submit()
+        self.restoreOverrideCursor()
+        self.close()
     
     def fillOldJobNoComboBox(self):
         query = QSqlQuery()
@@ -132,14 +138,14 @@ class NewJobDlg(QDialog,
         global UserID
         global UserName
         if self.askPass:
-            logger.debug("check password %s - %s " %(self.passLineEdit.text(), self.userComboBox.currentText()))
+            #logger.debug("check password %s - %s " %(self.passLineEdit.text(), self.userComboBox.currentText()))
             query = QSqlQuery()
             query.exec_("SELECT `password` FROM `employee` "
                 "WHERE `empl_First_Name` = '%s'" %self.userComboBox.currentText())
             print query.lastQuery()
             while query.next():
                 if QString(query.value(0).toString()) == self.passLineEdit.text():
-                    logger.debug(" password ok")
+                    #logger.debug(" password ok")
                     QMessageBox.information(None,
                         self.trUtf8("Password OK"),
                         self.trUtf8("""Password OK"""),
@@ -162,7 +168,7 @@ class NewJobDlg(QDialog,
         MainWindow.uname = self.userName
         form._dateLabel.setText("Selected Date : %s-%s-%s." % (now.day(),  now.month(),  now.year()  ))
         form._userLabel.setText('Login as ' + str(self.userName))
-        logger.debug("Setting date to today")
+        #logger.debug("Setting date to today")
         form.currentDate = now
         #MainWindow.showDetails(form)
         form.show()

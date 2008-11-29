@@ -20,7 +20,7 @@ class ServerModel(lib.treeoftable.TreeOfTableModel):
 
     def __init__(self, parent=None):
         super(ServerModel, self).__init__(parent)
-        print "in servermodel"
+       # print "in servermodel"
 
     def data(self, index, role):
         if role == Qt.DecorationRole:
@@ -37,8 +37,8 @@ class ServerModel(lib.treeoftable.TreeOfTableModel):
 #                if parent == "USA":
 #                    filename = "USA_" + filename
                 filename = os.path.join(os.path.dirname(__file__),
-                                        "images", "filenew.png")
-                pixmap = QPixmap(filename)
+                                        "images", ":filenew.png")
+                pixmap = QPixmap.fromImage(QImage(":images/16x16/actions/filenew.png"))
                 if pixmap.isNull():
                     return QVariant()
                 return QVariant(pixmap)
@@ -47,17 +47,18 @@ class ServerModel(lib.treeoftable.TreeOfTableModel):
 
 class TreeOfTableWidget(QTreeView):
 
-    def __init__(self, parent=None):
+    def __init__(self,nesting,  parent=None):
         super(TreeOfTableWidget, self).__init__(parent)
         self.setSelectionBehavior(QTreeView.SelectRows)
         self.setUniformRowHeights(True)
-        headers = ["Job Status", "Number", "Date"]
-        print "in Treeof TableWidget"
+        headers = ["Job Status/Customer/Job No", "Job Description"]
+        #print "in Treeof TableWidget"
         model = ServerModel(self)
         self.setModel(model)
         self.model().headers = headers
         try:
-            model.load()
+            nesting = 2
+            model.load(nesting)
         except IOError, e:
             pass
             #QMessageBox.warning(self, "Server Info - Error")

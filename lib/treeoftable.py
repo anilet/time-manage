@@ -108,7 +108,9 @@ class LeafNode(object):
 
 
     def field(self, column):
+        #print column
         assert 0 <= column <= len(self.fields)
+       # if self.fields[column]:
         return self.fields[column]
 
 
@@ -121,22 +123,22 @@ class TreeOfTableModel(QAbstractItemModel):
         self.headers = []
 
 
-    def load(self): 
-        #assert nesting > 0
-        #self.nesting = nesting
-        separator = ","
+    def load(self, nesting): 
+        assert nesting > 0
+        self.nesting = nesting
+        separator = ":"
         self.root = BranchNode("")
         exception = None
         fh = None
-        print "loading data"
+        #print "loading data"
         try:
   #          connectToMysql()
             query = QSqlQuery()
-            print "Executing query"
-            query.exec_("select jobs1.job_No,jobstatus.Description,customer.cust_Name  from `jobs1` JOIN `customer` ON (jobs1.FK_customer_Id=customer.cust_Id) JOIN jobstatus ON (jobs1.FK_jobstatus_Id=jobstatus.ID)")
+            #print "Executing query"
+            query.exec_("select jobs1.job_No,jobs1.job_Description,jobstatus.Description,customer.cust_Name  from `jobs1` JOIN `customer` ON (jobs1.FK_customer_Id=customer.cust_Id) JOIN jobstatus ON (jobs1.FK_jobstatus_Id=jobstatus.ID)")
             while query.next():
-                name = unicode(query.value(1).toString()) + "," + unicode(query.value(2).toString()) + "," + unicode(query.value(0).toString()) 
-                print name
+                name = unicode(query.value(2).toString()) + ":" + unicode(query.value(3).toString()) + ":" + unicode(query.value(0).toString()) + ":" + unicode(query.value(1).toString()) 
+                #print name
                 self.addRecord(name.split(separator), False)
         except IOError, e:
             exception = e
@@ -151,10 +153,10 @@ class TreeOfTableModel(QAbstractItemModel):
 
 
     def addRecord(self, fields, callReset=True):
-        #assert len(fields) > self.nesting
+        assert len(fields) > self.nesting
         root = self.root
         branch = None
-        for i in range(2):
+        for i in range(self.nesting):
             key = fields[i].lower()
             #key = fields[i]
             branch = root.childWithKey(key)
@@ -165,7 +167,7 @@ class TreeOfTableModel(QAbstractItemModel):
                 root.insertChild(branch)
                 root = branch
         assert branch is not None
-        items = fields[2:]
+        items = fields[self.nesting:]
         self.columns = max(self.columns, len(items))
         branch.insertChild(LeafNode(items, branch))
         if callReset:

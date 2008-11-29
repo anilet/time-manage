@@ -149,6 +149,12 @@
                </item>
                <item row="0" column="1" colspan="2" >
                 <widget class="QLineEdit" name="inLineEdit" >
+                 <property name="sizePolicy" >
+                  <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="minimumSize" >
                   <size>
                    <width>50</width>
@@ -218,6 +224,12 @@
                </item>
                <item row="1" column="1" >
                 <widget class="QLineEdit" name="outLineEdit" >
+                 <property name="sizePolicy" >
+                  <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="minimumSize" >
                   <size>
                    <width>50</width>
@@ -644,14 +656,20 @@
         <item>
          <widget class="QDockWidget" name="dockWidget" >
           <property name="sizePolicy" >
-           <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
+           <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="minimumSize" >
+           <size>
+            <width>380</width>
+            <height>97</height>
+           </size>
+          </property>
           <property name="maximumSize" >
            <size>
-            <width>349</width>
+            <width>1000000</width>
             <height>524287</height>
            </size>
           </property>

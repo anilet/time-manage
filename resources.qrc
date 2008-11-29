@@ -1,5 +1,6 @@
 <RCC>
   <qresource>
+    <file>images/16x16/actions/filenew.png</file>
     <file>images/16x16/actions/filesave.png</file>
     <file>images/16x16/actions/gnome-searchtool.png</file>
     <file>images/16x16/actions/reload.png</file>

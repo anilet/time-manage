@@ -33,7 +33,8 @@ import ui.ui_atlasTime
 import ui.ui_atlasUserDlg
 import ui.ui_mainWindow
 from newJobDlg import   NewJobDlg
-from progressDlg import   ProgressDlg
+#from progressDlg import   ProgressDlg
+from control import   ControlProgressIndicator
 from settingsDlg import   SettingsDlg
 from lib.database import KDatabase
 import lib.treeoftable
@@ -218,6 +219,7 @@ def readConfigFile(errorHandling):
     #global uiWinDim, uiTearOff, uiTextProgMenu, uiToolButtons, uiIconSet
     settings = QSettings()
     #print "in config"
+    DBType = QString("QMYSQL")
     try:
         
         UserName = settings.value("UserName").toString()
@@ -227,7 +229,7 @@ def readConfigFile(errorHandling):
         DBPort = settings.value("DBPort").toString()
         DBUser = settings.value("DBUser").toString()
         DBPass = settings.value("DBPass").toString()
-        DBType = settings.value("DBType").toString()
+        #DBType = settings.value("DBType").toString()
         if debug:
             print "Printing from configuration %s, %s, %s, %s, %s, %s" % (DBHost, DBName,  DBPass,  DBPort,  DBType,  DBUser)
     except:
@@ -708,6 +710,7 @@ class MainWindow(QMainWindow,
         if debug:
             logger.debug('date changed UserID is %s' %UserID)
         self. setDirty()
+        
         if dailyTimeDirty:
             reply = QMessageBox.question(self,
                 "Atlas Time Manager - Unsaved Changes",
@@ -802,10 +805,10 @@ class MainWindow(QMainWindow,
             QMessageBox.warning(self, "Daily time sheet -- Database Error",
                     "Failed to open database %s" % (query.lastError().text()))
         else:
-            #if not progressForm:
+            
             app.setOverrideCursor(QCursor(Qt.WaitCursor))
-            progressForm = ProgressDlg(self)
-            progressForm.lblMessage.setText("Saving data......")
+            progressForm = ControlProgressIndicator(self)
+            progressForm.statusLabel.setText("Saving data......")
             progressForm.show()
             chartDrawn = False
             self.monthGraphDataForMatplot()
@@ -855,8 +858,8 @@ class MainWindow(QMainWindow,
         else:
             #if not progressForm:
             app.setOverrideCursor(QCursor(Qt.WaitCursor))
-            progressForm = ProgressDlg(self)
-            progressForm.lblMessage.setText("Deleting data......")
+            progressForm = ControlProgressIndicator(self)
+            progressForm.statusLabel.setText("Deleting data......")
             progressForm.show()
             chartDrawn = False
             self.monthGraphDataForMatplot()
@@ -903,7 +906,7 @@ class MainWindow(QMainWindow,
             if not(self.inLineEdit.text().isEmpty() and \
                            self.outLineEdit.text().isEmpty()):
                 self.addDailyTimeButton.setEnabled(True)
-            
+            self.inLineEdit.setFocus()
             self.editButton.setEnabled(False)
             self.deleteTimeButton.setEnabled(False)
             self.inLineEdit.setEnabled(True)
@@ -1395,9 +1398,9 @@ class MainWindow(QMainWindow,
         data =  UserID
         self.hourModel.setData(index,QVariant(data) ,(Qt.EditRole))
         
-#        index = self.hourModel.index(row, 2)
-#        data =  "Bench"
-#        self.hourModel.setData(index,QVariant(data) ,(Qt.EditRole))
+        index = self.hourModel.index(row, 9)
+        data =  0
+        self.hourModel.setData(index,QVariant(data) ,(Qt.EditRole))
         
         index = self.hourModel.index(row, JOBNO)
         self.hourView.setCurrentIndex(index)
@@ -1479,17 +1482,12 @@ class MainWindow(QMainWindow,
             jobDataSaved = True
             #if not progressForm:
             app.setOverrideCursor(QCursor(Qt.WaitCursor))
-            progressForm = ProgressDlg(self)
-            progressForm.lblMessage.setText("Saving data......")
+            progressForm = ControlProgressIndicator(self)
+            progressForm.statusLabel.setText("Saving data......")
             progressForm.show()
             chartDrawn = False
             self.monthGraphDataForMatplot()
             app.restoreOverrideCursor()
-#            QMessageBox.information(None,
-#                self.trUtf8("Success"),
-#                self.trUtf8("""Successfully entered data"""),
-#                QMessageBox.StandardButtons(\
-#                    QMessageBox.Ok))
         else:
             jobDataSaved = False
             if debug:

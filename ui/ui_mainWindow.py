@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '/home/anilet/atlas/time-manage/ui/mainWindow.ui'
 #
-# Created: Wed Nov 26 23:35:34 2008
+# Created: Sat Nov 29 23:53:00 2008
 #      by: PyQt4 UI code generator 4.4.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -81,6 +81,11 @@ class Ui_MainWindow(object):
         self.label.setObjectName("label")
         self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
         self.inLineEdit = QtGui.QLineEdit(self.dailyTimeGP)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.inLineEdit.sizePolicy().hasHeightForWidth())
+        self.inLineEdit.setSizePolicy(sizePolicy)
         self.inLineEdit.setMinimumSize(QtCore.QSize(50, 27))
         self.inLineEdit.setMaximumSize(QtCore.QSize(50, 16777215))
         self.inLineEdit.setMaxLength(5)
@@ -101,6 +106,11 @@ class Ui_MainWindow(object):
         self.outComboBox.addItem(QtCore.QString())
         self.gridLayout.addWidget(self.outComboBox, 1, 4, 1, 1)
         self.outLineEdit = QtGui.QLineEdit(self.dailyTimeGP)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.outLineEdit.sizePolicy().hasHeightForWidth())
+        self.outLineEdit.setSizePolicy(sizePolicy)
         self.outLineEdit.setMinimumSize(QtCore.QSize(50, 27))
         self.outLineEdit.setMaximumSize(QtCore.QSize(50, 16777215))
         self.outLineEdit.setMaxLength(5)
@@ -283,12 +293,13 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9 = QtGui.QHBoxLayout(self.treeTab)
         self.horizontalLayout_9.setObjectName("horizontalLayout_9")
         self.dockWidget = QtGui.QDockWidget(self.treeTab)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Preferred)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.dockWidget.sizePolicy().hasHeightForWidth())
         self.dockWidget.setSizePolicy(sizePolicy)
-        self.dockWidget.setMaximumSize(QtCore.QSize(349, 524287))
+        self.dockWidget.setMinimumSize(QtCore.QSize(380, 97))
+        self.dockWidget.setMaximumSize(QtCore.QSize(1000000, 524287))
         self.dockWidget.setFeatures(QtGui.QDockWidget.NoDockWidgetFeatures)
         self.dockWidget.setAllowedAreas(QtCore.Qt.LeftDockWidgetArea)
         self.dockWidget.setObjectName("dockWidget")
